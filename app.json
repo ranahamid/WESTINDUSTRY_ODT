@@ -1,0 +1,26 @@
+{
+  "id": "306de470-9918-42a5-95fe-44ae4aa3944d",
+  "name": "WESTINDUSTRY",
+  "publisher": "ODT",
+  "brief": "",
+  "description": "",
+  "version": "1.0.1.7",
+  "privacyStatement": "",
+  "EULA": "",
+  "help": "",
+  "url": "",
+  "logo": "",
+  "capabilities": [],
+  "dependencies": [],
+  "screenshots": [],
+  "platform": "14.0.35916.0",
+  "application": "14.5.35970.0",
+  "target": "Extension",
+  "showMyCode": true,
+  "idRanges": [
+    {
+      "from": 50000,
+      "to": 50200
+    }
+  ]
+}
