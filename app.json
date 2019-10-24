@@ -4,7 +4,7 @@
   "publisher": "ODT",
   "brief": "",
   "description": "",
-  "version": "1.0.1.7",
+  "version": "1.0.1.9",
   "privacyStatement": "",
   "EULA": "",
   "help": "",
@@ -17,10 +17,12 @@
   "application": "14.5.35970.0",
   "target": "Extension",
   "showMyCode": true,
+  "runtime": "3.2",
   "idRanges": [
     {
       "from": 50000,
       "to": 50200
     }
   ]
+  
 }
