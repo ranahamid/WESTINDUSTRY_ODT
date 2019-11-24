@@ -69,6 +69,13 @@ page 50003 "ODT Posted Field Ticket"
                     ApplicationArea = All;
                     Visible = FALSE;
                 }
+                field("Invoice Description"; "Invoice Description")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the Invoice Description';
+                    MultiLine = true;
+                    Caption = 'Invoice Description';
+                }
                 field("ODT Business Unit"; "ODT Business Unit")
                 {
                     Caption = 'Business Unit';
@@ -237,8 +244,8 @@ page 50003 "ODT Posted Field Ticket"
             part(Control1101754041; "ODT Posted Field Ticket Line")
             {
                 ApplicationArea = All;
-                SubPageLink = "Field Ticket No." = FIELD ("Field Ticket No.");
-                SubPageView = SORTING ("Field Ticket No.");
+                SubPageLink = "Field Ticket No." = FIELD("Field Ticket No.");
+                SubPageView = SORTING("Field Ticket No.");
             }
         }
         area(factboxes)
@@ -266,7 +273,7 @@ page 50003 "ODT Posted Field Ticket"
                 PromotedCategory = Process;
                 PromotedIsBig = true;
                 RunObject = Page "Job Card";
-                RunPageLink = "No." = FIELD ("Job No.");
+                RunPageLink = "No." = FIELD("Job No.");
             }
         }
     }

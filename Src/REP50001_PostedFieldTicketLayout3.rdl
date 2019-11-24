@@ -2839,6 +2839,9 @@ End Function
         <Field Name="Header_AFE">
           <DataField>Header_AFE</DataField>
         </Field>
+        <Field Name="Header_InvoiceDescription">
+          <DataField>Header_InvoiceDescription</DataField>
+        </Field>
         <Field Name="Header_BusinessUnit">
           <DataField>Header_BusinessUnit</DataField>
         </Field>
@@ -3016,6 +3019,9 @@ End Function
         <Field Name="JobHeader12">
           <DataField>JobHeader12</DataField>
         </Field>
+        <Field Name="JobHeader13">
+          <DataField>JobHeader13</DataField>
+        </Field>
         <Field Name="JobHeaderLabels1">
           <DataField>JobHeaderLabels1</DataField>
         </Field>
@@ -3051,6 +3057,9 @@ End Function
         </Field>
         <Field Name="JobHeaderLabels12">
           <DataField>JobHeaderLabels12</DataField>
+        </Field>
+        <Field Name="JobHeaderLabels13">
+          <DataField>JobHeaderLabels13</DataField>
         </Field>
         <Field Name="Line_UnitType">
           <DataField>Line_UnitType</DataField>

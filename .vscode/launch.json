@@ -4,8 +4,16 @@
     {
       "type": "al",
       "request": "launch",
-      "name": "Publish",
-      "tenant": "canam.onmicrosoft.com"
+      "sandboxName": "SANDBOX",
+      "name": "Microsoft cloud sandbox",
+      "startupObjectId": 22,
+      "startupObjectType": "Page",
+      "breakOnError": true,
+      "launchBrowser": true,
+      "enableLongRunningSqlStatements": true,
+      "enableSqlInformationDebugger": true,
+      "schemaUpdateMode": "Synchronize" ,
+     // "tenant": "canam.onmicrosoft.com"
     }
   ]
 }

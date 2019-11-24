@@ -65,6 +65,13 @@ page 50000 "ODT Field Ticket Job Mapping"
                     ApplicationArea = All;
                     Visible = FALSE;
                 }
+                field("Invoice Description"; 'Invoice Description')
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the Invoice Description';
+                    MultiLine = true;
+                    Caption = 'Invoice Description';
+                }
                 field("ODT Business Unit"; "ODT Business Unit")
                 {
                     Caption = 'Business Unit';
@@ -233,8 +240,8 @@ page 50000 "ODT Field Ticket Job Mapping"
             part(Control1101754040; "ODT Field Ticket Line")
             {
                 ApplicationArea = All;
-                SubPageLink = "Field Ticket No." = FIELD ("Field Ticket No.");
-                SubPageView = SORTING ("Field Ticket No.");
+                SubPageLink = "Field Ticket No." = FIELD("Field Ticket No.");
+                SubPageView = SORTING("Field Ticket No.");
             }
         }
         area(factboxes)
@@ -262,7 +269,7 @@ page 50000 "ODT Field Ticket Job Mapping"
                 PromotedCategory = Process;
                 PromotedIsBig = true;
                 RunObject = Page "Job Card";
-                RunPageLink = "No." = FIELD ("Job No.");
+                RunPageLink = "No." = FIELD("Job No.");
             }
             action(Suggest)
             {
