@@ -33,22 +33,7 @@ table 50003 "ODT Field Ticket Job Mapping"
                 JobJnl.SETFILTER("No.", '<>%1', '');
                 if JobJnl.FIND('-') then ERROR(TEXT001);
                 if Job.GET("Job No.") then begin
-                    //IF "SUR LSD Format" = '' THEN
-                    //  "SUR LSD Format" := Job."SUR LSD Format";
-                    //IF "DH LSD Format" = '' THEN
-                    //  "DH LSD Format" := Job."DH LSD Format";
-                    //IF "From DH LSD" = '' THEN
-                    //  "From DH LSD" := Job."From DH LSD";
-                    //IF "From SUR LSD" = '' THEN
-                    // "From SUR LSD" := Job."From SUR LSD";
-                    //IF "To DH LSD" = '' THEN
-                    //  "To DH LSD" := Job."To DH LSD";
-                    //IF "To SUR LSD" = '' THEN
-                    //  "To SUR LSD" := Job."To SUR LSD";
-                    //IF "Rig No." = '' THEN
-                    //  "Rig No." := Job."Rig No.";
-                    //IF "AFE No." = '' THEN
-                    // "AFE No." := Job."AFE No.";
+
                     "Bill-to Customer No." := Job."Bill-to Customer No.";
                     "Project Manager" := Job."Project Manager";
                     "Job Description" := Job.Description;
@@ -65,49 +50,9 @@ table 50003 "ODT Field Ticket Job Mapping"
                     "ODT Service Order" := Job."ODT Service Order";
                     "Invoice Description" := Job.InvoiceDescription;
 
-                    // "ODT Land Surveyor" := Job."ODT Land Surveyor";
-                    // "ODT Date Received" := Job."ODT Date Received";
-                    // "ODT Originator" := Job."ODT Originator";
-                    // "ODT Location" := Job."ODT Location";
-                    // "ODT Internal Notes" := Job."ODT Internal Notes";
-                    // "ODT Project Instructions" := Job."ODT Project Instructions";
-                    // "ODT Job LSDs" := Job."ODT Job LSDs";
-                    // if "Rental Order No."='' then
-                    //     "Rental Order No.":=Job."Sales Order No.";     //<NE02.01/>
-                    //NB03.58+ ODTJR Add i2x Fields
-                    // if "Company Code" = '' then
-                    //     "Company Code" := Job."Company Code";
-                    // if "Department/Attention To" = '' then
-                    //     "Department/Attention To" := Job."Department/Attention To";
-                    // if "Plant Code" = '' then
-                    //     "Plant Code" := Job."Plant Code";
-                    // if "Approver ID" = '' then
-                    //     "Approver ID" := Job."Approver ID";
-                    // if Requisitioner = '' then
-                    //     Requisitioner  := Job.Requisitioner;
-                    // if "Work Order No."  = '' then
-                    //     "Work Order No."  := Job."Work Order No.";
-                    // if "Reviewer ID"  = '' then
-                    //     "Reviewer ID"  := Job."Reviewer ID";
-                    // if "Activity Code"  = '' then
-                    //     "Activity Code"  := Job."Activity Code";
-                    // if "Billing LSD"  = '' then
-                    //     "Billing LSD"  := Job."Billing LSD";
-                    // if "Company Code"  = '' then
-                    //     "Company Code"  := Job."Company Code";
-                    // if "Company Code" = '' then
-                    //     "Company Code"  := Job."Company Code";
-                    // if "Billing LSD Format"  = '' then
-                    //     "Billing LSD Format"  := Job."Billing LSD Format";
-                    // if "Customer G/L Account Code"  = '' then
-                    //     "Customer G/L Account Code"  := Job."Customer G/L Account Code";
-                    // if "Summary Description" = '' then
-                    //     "Summary Description"  := Job."Summary Description";
+
                     if "Bill-to Contact" = '' then "Bill-to Contact" := Job."Bill-to Contact";
-                    // "Reference Field Type"  := Job."Reference Field Type";
-                    // if "Reference Field No." = '' then
-                    //     "Reference Field No."  := Job."Reference Field No.";
-                    //NB03.58-
+
                 end;
             end;
         }
@@ -139,10 +84,7 @@ table 50003 "ODT Field Ticket Job Mapping"
                 JobJnl: Record "Job Journal Line";
                 TEXT001: Label '"You cannot change the Bill-to Customer when there are Job Journal Lines created for the Field Ticket. "';
             begin
-                //NB04.04+ ODTJR Change
-                //IF "Job No." <> '' THEN
-                //  ERROR('You can not change the Bill-to Customer No. for an existing Job.'); //NB04.04
-                //NB04.04-
+
                 JobJnl.SETRANGE("Job No.", "Job No.");
                 JobJnl.SETRANGE("ODT Field Ticket No.", "Field Ticket No.");
                 JobJnl.SETFILTER("No.", '<>%1', '');
@@ -163,13 +105,7 @@ table 50003 "ODT Field Ticket Job Mapping"
             begin
                 VALIDATE("From DH LSD");
                 VALIDATE("From SUR LSD");
-                //NB03.45-->
-                // if "Job No." <> '' then begin
-                //   Job.GET("Job No.");
-                //   Job."SUR LSD Format" := "SUR LSD Format";
-                //   Job.MODIFY;
-                // end;
-                //<--NB03.45
+
             end;
         }
         field(40; "From SUR LSD"; Code[50])
@@ -180,16 +116,7 @@ table 50003 "ODT Field Ticket Job Mapping"
 
             trigger OnValidate();
             begin
-                //TESTFIELD("From LSD Format");
-                //IF "From SUR LSD" <> '' THEN
-                //LSDFormats.ValidateFormat("SUR LSD Format", "From SUR LSD");
-                //NB03.45-->
-                // if "Job No." <> '' then begin
-                //   Job.GET("Job No.");
-                //   Job."From SUR LSD" := "From SUR LSD";
-                //   Job.MODIFY;
-                // end;
-                //<--NB03.45
+
             end;
         }
         field(50; "To SUR LSD"; Code[50])
@@ -202,10 +129,9 @@ table 50003 "ODT Field Ticket Job Mapping"
             var
                 LSD: Record "ODT LSD";
             begin
-                //TESTFIELD("To LSD Format");
+
                 if "To SUR LSD" <> '' then begin
-                    //LSDFormats.ValidateFormat("SUR LSD Format", "To SUR LSD");//NB03.27 line removed
-                    //LSDFormats.ValidateFormat("SUR LSD Format", "To SUR LSD");//NB03.27
+
                     LSD.RESET;
                     LSD.SETRANGE("LSD Code", "To SUR LSD");
                     if LSD.FINDFIRST then
@@ -215,13 +141,7 @@ table 50003 "ODT Field Ticket Job Mapping"
                 end
                 else
                     CLEAR("To DH LSD");
-                //NB03.45-->
-                // if "Job No." <> '' then begin
-                //   Job.GET("Job No.");
-                //   Job."To SUR LSD" := "To SUR LSD";
-                //   Job.MODIFY;
-                // end;
-                //<--NB03.45
+
             end;
         }
         field(60; "DH LSD Format"; Code[10])
@@ -233,13 +153,7 @@ table 50003 "ODT Field Ticket Job Mapping"
             begin
                 VALIDATE("To DH LSD");
                 VALIDATE("To SUR LSD");
-                //NB03.45-->
-                // if "Job No." <> '' then begin
-                //   Job.GET("Job No.");
-                //   Job."DH LSD Format" := "DH LSD Format";
-                //   Job.MODIFY;
-                // end;
-                //<--NB03.45
+
             end;
         }
         field(70; "From DH LSD"; Code[50])
@@ -250,17 +164,7 @@ table 50003 "ODT Field Ticket Job Mapping"
 
             trigger OnValidate();
             begin
-                //TESTFIELD("From LSD Format");
-                //IF "From DH LSD" <> '' THEN
-                //LSDFormats.ValidateFormat("DH LSD Format", "From DH LSD");//NB03.27 line removed
-                //LSDFormats.ValidateFormat("DH LSD Format", "From DH LSD");//NB03.27
-                //NB03.45-->
-                // if "Job No." <> '' then begin
-                //   Job.GET("Job No.");
-                //   Job."From DH LSD" := "From DH LSD";
-                //   Job.MODIFY;
-                // end;
-                //<--NB03.45
+
             end;
         }
         field(80; "To DH LSD"; Code[50])
@@ -282,39 +186,21 @@ table 50003 "ODT Field Ticket Job Mapping"
                     "DH LSD Format" := LSD."LSD Format Code"
                 else
                     CLEAR("DH LSD Format");
-                //NB03.45-->
-                // if "Job No." <> '' then begin
-                //   Job.GET("Job No.");
-                //   Job."To DH LSD" := "To DH LSD";
-                //   Job.MODIFY;
-                // end;
-                //<--NB03.45
+
             end;
         }
         field(90; "Rig No."; Text[30])
         {
             trigger OnValidate();
             begin
-                //NB03.45-->
-                // if "Job No." <> '' then begin
-                //   Job.GET("Job No.");
-                //   Job."Rig No." := "Rig No.";
-                //   Job.MODIFY;
-                // end;
-                //<--NB03.45
+
             end;
         }
         field(100; "AFE No."; Code[30])
         {
             trigger OnValidate();
             begin
-                //NB03.45-->
-                // if "Job No." <> '' then begin
-                //   Job.GET("Job No.");
-                //   Job.VALIDATE("AFE No.","AFE No.");
-                //   Job.MODIFY;
-                // end;
-                //<--NB03.45
+
             end;
         }
         field(110; "Field Ticket Date"; Date)

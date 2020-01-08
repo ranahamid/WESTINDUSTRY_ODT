@@ -5,11 +5,10 @@ pageextension 50025 SalesInvoiceListExt extends "Sales Invoice List"
         // Add changes to page layout here
         addafter("Sell-to Customer Name")
         {
-            field("Job Number"; JobNumber)
+            field("JobNumber"; JobNumber)
             {
                 ApplicationArea = All;
                 ToolTip = 'Specifies the Job Number';
-                Lookup = true;
                 Caption = 'Job No.';
                 Editable = false;
             }

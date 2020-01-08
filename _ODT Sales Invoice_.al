@@ -1,11 +1,7 @@
 report 50003 "ODT Sales Invoice"
 {
-    // version NAVNA11.00
     DefaultLayout = RDLC;
-    //ODTKB : 2019/07/26 : BEGIN
-    //RDLCLayout = 'Src/REP50003_SalesInvoice2.rdl';
     RDLCLayout = 'Src/REP50003_SalesInvoice3.rdl';
-    //ODTKB : END
     Caption = 'Sales - Invoice';
 
     dataset
@@ -16,8 +12,6 @@ report 50003 "ODT Sales Invoice"
             DataItemTableView = SORTING("No.");
             PrintOnlyIfDetail = true;
             RequestFilterFields = "No.", "Sell-to Customer No.", "Bill-to Customer No.", "Ship-to Code", "No. Printed";
-
-            //RequestFilterHeadingML = 'Sales Invoice';
             column(No_SalesInvHeader;
             "No.")
             {
@@ -389,6 +383,12 @@ report 50003 "ODT Sales Invoice"
                     column(Header_InvoiceDescription; "Sales Invoice Header"."InvoiceDescription")
                     {
                     }
+
+                    column(Header_JobNumber; "Sales Invoice Header"."JobNumber")
+                    {
+                    }
+
+
                     column(Header_BusinessUnit;
                     "Sales Invoice Header"."ODT Business Unit")
                     {
@@ -486,6 +486,10 @@ report 50003 "ODT Sales Invoice"
                     JobHeader[13])
                     {
                     }
+                    column(JobHeader14;
+                    JobHeader[14])
+                    {
+                    }
                     column(JobHeaderLabels1;
                     JobHeaderLabels[1])
                     {
@@ -536,6 +540,10 @@ report 50003 "ODT Sales Invoice"
                     }
                     column(JobHeaderLabels13;
                     JobHeaderLabels[13])
+                    {
+                    }
+                    column(JobHeaderLabels14;
+                    JobHeaderLabels[14])
                     {
                     }
                     dataitem(SalesInvLine;
@@ -870,7 +878,6 @@ report 50003 "ODT Sales Invoice"
                             IF NOT InStr.EOS() THEN CurrReport.BREAK;
                             TempBlobWorkDescription.CreateInStream(InStr);
                             Result := InStr.ReadText(WorkDescriptionLine);
-
 
                         end;
 
@@ -1231,8 +1238,6 @@ report 50003 "ODT Sales Invoice"
         ShowWorkDescription: Boolean;
         WorkDescriptionLine: Text;
 
-
-        // TempBlobWorkDescription: Record TempBlob;
         TempBlobWorkDescription: Codeunit "Temp Blob";
         Result: Integer;
 
@@ -1241,8 +1246,8 @@ report 50003 "ODT Sales Invoice"
         User: Record User;
         Job: Record Job;
         FTMgt: Codeunit "ODT Field Ticket Management";
-        JobHeader: array[13] of Text[500];
-        JobHeaderLabels: array[13] of Text[500];
+        JobHeader: array[14] of Text[2000];
+        JobHeaderLabels: array[14] of Text[2000];
         GLAcct: Record "G/L Account";
         Resource: record Resource;
         Item: record Item;

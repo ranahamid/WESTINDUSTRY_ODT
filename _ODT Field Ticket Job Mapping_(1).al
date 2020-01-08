@@ -251,10 +251,7 @@ page 50000 "ODT Field Ticket Job Mapping"
                 ApplicationArea = All;
                 Visible = true;
             }
-            // part(Control1101754039; 50302)
-            // {
-            //     SubPageLink = Field1 = FIELD ("Dispatch ID");
-            // }
+
         }
     }
     actions

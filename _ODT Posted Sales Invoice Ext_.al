@@ -2,6 +2,16 @@ pageextension 50016 "ODT Posted Sales Invoice Ext" extends "Posted Sales Invoice
 {
     layout
     {
+        addlast(General)
+        {
+            field("JobNumber"; JobNumber)
+            {
+                Caption = 'Job No.';
+                ApplicationArea = All;
+                ToolTip = 'Specifies the Job No.';
+
+            }
+        }
         addbefore("Currency Code")
         {
             field("ODT AFE"; "ODT AFE")
@@ -68,17 +78,7 @@ pageextension 50016 "ODT Posted Sales Invoice Ext" extends "Posted Sales Invoice
                 ApplicationArea = All;
             }
         }
-        addlast(General)
-        {
-            field("Job Number"; JobNumber)
-            {
-                ApplicationArea = All;
-                ToolTip = 'Specifies the Job Number';
-                Lookup = true;
-                Caption = 'Job No.';
-                Editable = false;
-            }
-        }
+
     }
     actions
     {

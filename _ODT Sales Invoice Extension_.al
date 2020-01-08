@@ -69,12 +69,12 @@ pageextension 50015 "ODT Sales Invoice Extension" extends "Sales Invoice"
         }
         addlast(General)
         {
-            field("Job Number"; JobNumber)
+            field("JobNumber"; JobNumber)
             {
-                ApplicationArea = All;
-                ToolTip = 'Specifies the Job Number';
-                Lookup = true;
                 Caption = 'Job No.';
+                ApplicationArea = All;
+                // ToolTip = 'Specifies the Job Number';
+                // Lookup = true;
             }
         }
 

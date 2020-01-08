@@ -1,13 +1,7 @@
-tableextension 50012 "ODT SalesInvoiceHeaderExt" extends "Sales Invoice Header" //MyTargetTableId
+tableextension 50012 "ODT SalesInvoiceHeaderExt" extends "Sales Invoice Header"
 {
     fields
     {
-        field(50102; JobNumber; Code[30])
-        {
-            TableRelation = Job."No.";
-            ValidateTableRelation = true;
-        }
-
         field(50060; "ODT AFE"; Text[50])
         {
             Caption = 'AFE';
@@ -18,6 +12,12 @@ tableextension 50012 "ODT SalesInvoiceHeaderExt" extends "Sales Invoice Header" 
             Caption = 'Invoice Description';
             DataClassification = ToBeClassified;
         }
+        field(50062; "JobNumber"; code[50])
+        {
+            Caption = 'Job No.';
+            DataClassification = ToBeClassified;
+        }
+
         field(50001; "ODT Business Unit"; Text[50])
         {
             Caption = 'Business Unit';

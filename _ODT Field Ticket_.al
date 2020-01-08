@@ -66,6 +66,11 @@ report 50000 "ODT Field Ticket"
                 {
                 }
 
+                column(Header_JobNumber; "Job"."No.")
+                {
+                }
+
+
                 column(Header_BusinessUnit;
                 Job."ODT Business Unit")
                 {
@@ -306,6 +311,10 @@ report 50000 "ODT Field Ticket"
                 JobHeader[13])
                 {
                 }
+                column(JobHeader14;
+                JobHeader[14])
+                {
+                }
                 column(JobHeaderLabels1;
                 JobHeaderLabels[1])
                 {
@@ -356,6 +365,10 @@ report 50000 "ODT Field Ticket"
                 }
                 column(JobHeaderLabels13;
                 JobHeaderLabels[13])
+                {
+                }
+                column(JobHeaderLabels14;
+                JobHeaderLabels[14])
                 {
                 }
                 dataitem(FieldTicketLine;
@@ -581,8 +594,8 @@ report 50000 "ODT Field Ticket"
         RateCaption: Text[20];
         AmountCaption: Text[20];
         FTMgt: Codeunit "ODT Field Ticket Management";
-        JobHeader: array[13] of Text[500];
-        JobHeaderLabels: array[13] of Text[500];
+        JobHeader: array[14] of Text[2000];
+        JobHeaderLabels: array[14] of Text[000];
         GLAcct: record "G/L Account";
         Resource: record Resource;
         Item: record Item;

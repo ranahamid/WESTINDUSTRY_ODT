@@ -91,8 +91,8 @@ codeunit 50002 "ODT Field Ticket Management"
         JobJnlPostLine.RunWithCheck(JobJnlLine);
     end;
 
-    procedure JobInfo(VAR HeaderArray: ARRAY[13] OF Text;
-    VAR HeaderCapArray: ARRAY[13] OF Text;
+    procedure JobInfo(VAR HeaderArray: ARRAY[14] OF Text;
+    VAR HeaderCapArray: ARRAY[14] OF Text;
     VAR Job: Record Job)
     begin
         CLEAR(HeaderArray);
@@ -110,8 +110,8 @@ codeunit 50002 "ODT Field Ticket Management"
             HeaderArray[10] := Job."ODT MSO";
             HeaderArray[11] := Job."ODT Purchase Order";
             HeaderArray[12] := Job."ODT Service Order";
-
             HeaderArray[13] := Job.InvoiceDescription;
+            HeaderArray[14] := Job."No.";
 
             IF HeaderArray[1] <> '' THEN HeaderCapArray[1] := Job.FIELDCAPTION("ODT Field Rep") + ':';
             IF HeaderArray[2] <> '' THEN HeaderCapArray[2] := Job.FIELDCAPTION("ODT AFE") + ':';
@@ -126,12 +126,14 @@ codeunit 50002 "ODT Field Ticket Management"
             IF HeaderArray[11] <> '' THEN HeaderCapArray[11] := Job.FIELDCAPTION("ODT Purchase Order") + ':';
             IF HeaderArray[12] <> '' THEN HeaderCapArray[12] := Job.FIELDCAPTION("ODT Service Order") + ':';
             IF HeaderArray[13] <> '' THEN HeaderCapArray[13] := Job.FIELDCAPTION("InvoiceDescription") + ':';
+            IF HeaderArray[14] <> '' THEN HeaderCapArray[14] := Job.FIELDCAPTION("No.") + ':';
+
         END;
         COMPRESSARRAY(HeaderCapArray);
         COMPRESSARRAY(HeaderArray);
     end;
 
-    procedure PostedSalesInvJobInfo(VAR HeaderArray: ARRAY[13] OF Text; VAR HeaderCapArray: ARRAY[13] OF Text; VAR Job: Record Job;
+    procedure PostedSalesInvJobInfo(VAR HeaderArray: ARRAY[14] OF Text; VAR HeaderCapArray: ARRAY[14] OF Text; VAR Job: Record Job;
         SalesInvHeader: Record "Sales Invoice Header")
     begin
         CLEAR(HeaderArray);
@@ -149,8 +151,10 @@ codeunit 50002 "ODT Field Ticket Management"
             HeaderArray[10] := SalesInvHeader."ODT MSO";
             HeaderArray[11] := SalesInvHeader."ODT Purchase Order";
             HeaderArray[12] := SalesInvHeader."ODT Service Order";
+            HeaderArray[13] := SalesInvHeader."InvoiceDescription";
+            HeaderArray[14] := SalesInvHeader.JobNumber;
 
-            HeaderArray[13] := SalesInvHeader."InvoiceDescription"; //RH 
+
 
             IF HeaderArray[1] <> '' THEN HeaderCapArray[1] := Job.FIELDCAPTION("ODT Field Rep") + ':';
             IF HeaderArray[2] <> '' THEN HeaderCapArray[2] := SalesInvHeader.FIELDCAPTION("ODT AFE") + ':';
@@ -166,6 +170,7 @@ codeunit 50002 "ODT Field Ticket Management"
             IF HeaderArray[12] <> '' THEN HeaderCapArray[12] := SalesInvHeader.FIELDCAPTION("ODT Service Order") + ':';
 
             IF HeaderArray[13] <> '' THEN HeaderCapArray[13] := SalesInvHeader.FIELDCAPTION("InvoiceDescription") + ':';
+            IF HeaderArray[14] <> '' THEN HeaderCapArray[14] := SalesInvHeader.FIELDCAPTION("JobNumber") + ':';
 
         END;
         COMPRESSARRAY(HeaderCapArray);

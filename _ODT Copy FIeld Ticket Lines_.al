@@ -8,23 +8,20 @@ report 50005 "ODT Copy FIeld Ticket Lines"
 
     dataset
     {
-        dataitem(Job;
-        Job)
+        dataitem(Job; Job)
         {
-
-            DataItemTableView = sorting ("No.");
-
+            DataItemTableView = sorting("No.");
             dataitem(JobTask;
             "Job Task")
             {
-                DataItemTableView = sorting ("Job No.", "Job Task No.");
-                DataItemLink = "Job No." = FIELD ("No.");
+                DataItemTableView = sorting("Job No.", "Job Task No.");
+                DataItemLink = "Job No." = FIELD("No.");
 
                 dataitem(JobPlanLine;
                 "Job Planning Line")
                 {
-                    DataItemTableView = sorting ("Job No.", "Job Task No.", "Line No.");
-                    DataItemLink = "Job No." = field ("Job No."), "Job Task No." = field ("Job Task No.");
+                    DataItemTableView = sorting("Job No.", "Job Task No.", "Line No.");
+                    DataItemLink = "Job No." = field("Job No."), "Job Task No." = field("Job Task No.");
 
                     trigger OnAfterGetRecord()
                     begin

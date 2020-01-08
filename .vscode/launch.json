@@ -13,6 +13,7 @@
       "enableLongRunningSqlStatements": true,
       "enableSqlInformationDebugger": true,
       "schemaUpdateMode": "Synchronize" ,
+      
      // "tenant": "canam.onmicrosoft.com"
     }
   ]

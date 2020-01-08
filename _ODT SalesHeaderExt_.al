@@ -2,10 +2,10 @@ tableextension 50011 "ODT SalesHeaderExt" extends "Sales Header" //MyTargetTable
 {
     fields
     {
-        field(50102; JobNumber; Code[30])
+        field(50062; "JobNumber"; code[50])
         {
-            TableRelation = Job."No.";
-            ValidateTableRelation = true;
+            Caption = 'Job No.';
+            DataClassification = ToBeClassified;
         }
         field(50060; "ODT AFE"; Text[50])
         {

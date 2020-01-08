@@ -255,10 +255,7 @@ page 50003 "ODT Posted Field Ticket"
                 Visible = true;
                 ApplicationArea = All;
             }
-            // part(Control1101754039;50302)
-            // {
-            //     SubPageLink = Field1=FIELD("Dispatch ID");
-            // }
+
         }
     }
     actions
@@ -288,59 +285,9 @@ page 50003 "ODT Posted Field Ticket"
     end;
 
     trigger OnClosePage();
-    var // FieldTicketError : ;
+    var
     begin
-        /*IF "Job No." <> '' THEN BEGIN
-              {  //NB03.45 -->
-                //Check if there are posted sales invoices and credits
-                SalesInvoiceHeader.SETRANGE("Job No.","Job No.");
-                IF SalesInvoiceHeader.FINDFIRST THEN
-                  ERROR('Posted Invoice %1 already exists for Job %2.',SalesInvoiceHeader."No.","Job No.");
-                SalesCrMemoHeader.SETRANGE("Job No.","Job No.");
-                IF SalesCrMemoHeader.FINDFIRST THEN
-                  ERROR('Posted Sales Credit %1 already exists for Job %2.',SalesCrMemoHeader."No.","Job No.");
-                //Check if Job Ledger already exists
-                JobLedgerEntry.SETCURRENTKEY("Job No.");
-                JobLedgerEntry.SETRANGE("Job No.","Job No.");
-                IF JobLedgerEntry.FINDFIRST THEN
-                  ERROR();
-                //<-- NB03.45
-               }
-                Job.GET("Job No.");
-                Job."SUR LSD Format" := "SUR LSD Format";
-                Job."DH LSD Format" := "DH LSD Format";
-                Job."From DH LSD" := "From DH LSD";
-                Job."To DH LSD" := "To DH LSD";
-                Job."From SUR LSD" := "From SUR LSD";
-                Job."To SUR LSD" := "To SUR LSD";
-                Job."Rig No." := "Rig No.";
-                Job."AFE #" := "AFE #";
-                Job."Reference Field Type" := "Reference Field Type"; //NB03.45
-                Job."Reference Field No." := "Reference Field No."; //NB03.45
-                Job.MODIFY;
-               {
-                //NB03.45 -->
-                //Update all Sales Headers with the same Job
-                SalesHeader.SETRANGE("Job No.","Job No.");
-                IF SalesHeader.FINDFIRST THEN
-                REPEAT
-                  IF SalesHeader."SUR LSD Format" <> "SUR LSD Format" THEN SalesHeader."SUR LSD Format" := "SUR LSD Format";
-                  IF SalesHeader."From SUR LSD" <> "From SUR LSD" THEN SalesHeader."From SUR LSD" := "From SUR LSD";
-                  IF SalesHeader."To SUR LSD" <> "To SUR LSD" THEN SalesHeader."To SUR LSD" := "To SUR LSD";
-                  IF SalesHeader."DH LSD Format" <> "DH LSD Format" THEN SalesHeader."DH LSD Format" := "DH LSD Format";
-                  IF SalesHeader."From DH LSD" <> "From DH LSD" THEN SalesHeader."From DH LSD" := "From DH LSD";
-                  IF SalesHeader."To DH LSD" <> "To DH LSD" THEN SalesHeader."To DH LSD" := "To DH LSD";
-                  IF SalesHeader."Rig No." <> "Rig No." THEN SalesHeader."Rig No." := "Rig No.";
-                  IF SalesHeader."AFE #" <> "AFE #" THEN SalesHeader."AFE #" := "AFE #";
-                  IF SalesHeader."Reference Field Type" <> "Reference Field Type" THEN SalesHeader."Reference Field Type" := "Reference Field Type";
-                  IF SalesHeader."Reference Field No." <> "Reference Field No." THEN SalesHeader."Reference Field No." := "Reference Field No.";
-                  SalesHeader.MODIFY;
-                UNTIL SalesHeader.NEXT = 0;
-                //<-- NB03.45
-              }
-              END ELSE
-                VALIDATE("Bill-to Customer No.");
-              */
+
     end;
 
     trigger OnInit();

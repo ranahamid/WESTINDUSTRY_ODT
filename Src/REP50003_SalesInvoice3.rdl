@@ -3664,6 +3664,9 @@ End Function</Code>
         <Field Name="Header_InvoiceDescription">
           <DataField>Header_InvoiceDescription</DataField>
         </Field>
+        <Field Name="Header_JobNumber">
+          <DataField>Header_JobNumber</DataField>
+        </Field>
         <Field Name="Header_BusinessUnit">
           <DataField>Header_BusinessUnit</DataField>
         </Field>
@@ -3736,6 +3739,9 @@ End Function</Code>
         <Field Name="JobHeader13">
           <DataField>JobHeader13</DataField>
         </Field>
+        <Field Name="JobHeader14">
+          <DataField>JobHeader14</DataField>
+        </Field>
         <Field Name="JobHeaderLabels1">
           <DataField>JobHeaderLabels1</DataField>
         </Field>
@@ -3774,6 +3780,9 @@ End Function</Code>
         </Field>
         <Field Name="JobHeaderLabels13">
           <DataField>JobHeaderLabels13</DataField>
+        </Field>
+        <Field Name="JobHeaderLabels14">
+          <DataField>JobHeaderLabels14</DataField>
         </Field>
         <Field Name="AmountExclInvDisc">
           <DataField>AmountExclInvDisc</DataField>

@@ -59,6 +59,7 @@ codeunit 50001 "ODT General Events"
         SalesHeader."ODT Job Description" := Job.Description;
         SalesHeader."ODT AFE" := Job."ODT AFE";
         SalesHeader."Invoice Description" := Job.InvoiceDescription;
+        SalesHeader.JobNumber := Job."No.";
 
         SalesHeader."ODT Business Unit" := Job."ODT Business Unit";
         SalesHeader."ODT Cost Centre" := Job."ODT Cost Centre";
