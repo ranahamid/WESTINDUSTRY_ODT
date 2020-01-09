@@ -846,46 +846,77 @@ report 50003 "ODT Sales Invoice"
                                 if TempLineFeeNoteOnReportHist.NEXT = 0 then CurrReport.BREAK;
                         end;
                     }
-                    dataitem(WorkDescriptionLines;
-                    "Integer")
+
+                    dataitem(WorkDescriptionLines; "Integer")
                     {
-                        DataItemTableView = SORTING(Number) ORDER(Ascending) WHERE(Number = FILTER(1 .. 99999));
-
-                        column(WorkDescriptionLineNumber;
-                        Number)
+                        DataItemTableView = SORTING(Number) WHERE(Number = FILTER(1 .. 99999));
+                        column(WorkDescriptionLineNumber; Number)
                         {
                         }
-                        column(WorkDescriptionLine;
-                        WorkDescriptionLine)
+                        column(WorkDescriptionLine; WorkDescriptionLine)
                         {
                         }
-                        trigger OnPreDataItem();
+
+                        trigger OnAfterGetRecord()
                         begin
-                            IF NOT ShowWorkDescription THEN CurrReport.BREAK;
-                            //RH
-                            // TempBlobWorkDescription.Blob := "Sales Invoice Header"."Work Description";//RH
-                            // TempBlobWorkDescription.StartReadingTextLines(TEXTENCODING::UTF8);//RH
-
-                            TempBlobWorkDescription.CreateInStream(InStr);
-                            Result := InStr.Read("Sales Invoice Header"."Work Description");
-                        end;
-
-                        trigger OnAfterGetRecord();
-                        begin
-                            // IF NOT TempBlobWorkDescription.MoreTextLines THEN CurrReport.BREAK; //RH
-                            // WorkDescriptionLine := TempBlobWorkDescription.ReadTextLine;//RH
-
-                            IF NOT InStr.EOS() THEN CurrReport.BREAK;
-                            TempBlobWorkDescription.CreateInStream(InStr);
-                            Result := InStr.ReadText(WorkDescriptionLine);
-
+                            if WorkDescriptionInstream.EOS then
+                                CurrReport.Break;
+                            WorkDescriptionInstream.ReadText(WorkDescriptionLine);
                         end;
 
                         trigger OnPostDataItem()
                         begin
-                            CLEAR(TempBlobWorkDescription);
+                            Clear(WorkDescriptionInstream)
+                        end;
+
+                        trigger OnPreDataItem()
+                        begin
+                            if not ShowWorkDescription then
+                                CurrReport.Break;
+                            "Sales Invoice Header"."Work Description".CreateInStream(WorkDescriptionInstream, TEXTENCODING::UTF8);
                         end;
                     }
+
+                    // dataitem(WorkDescriptionLines;
+                    // "Integer")
+                    // {
+                    //     DataItemTableView = SORTING(Number) ORDER(Ascending) WHERE(Number = FILTER(1 .. 99999));
+
+                    //     column(WorkDescriptionLineNumber;
+                    //     Number)
+                    //     {
+                    //     }
+                    //     column(WorkDescriptionLine;
+                    //     WorkDescriptionLine)
+                    //     {
+                    //     }
+                    //     trigger OnPreDataItem();
+                    //     begin
+                    //         IF NOT ShowWorkDescription THEN CurrReport.BREAK;
+                    //         //RH
+                    //         // TempBlobWorkDescription.Blob := "Sales Invoice Header"."Work Description";//RH
+                    //         // TempBlobWorkDescription.StartReadingTextLines(TEXTENCODING::UTF8);//RH
+
+                    //         TempBlobWorkDescription.CreateInStream(InStr, TextEncoding::UTF8);
+                    //         Result := InStr.Read("Sales Invoice Header"."Work Description");
+                    //     end;
+
+                    //     trigger OnAfterGetRecord();
+                    //     begin
+                    //         // IF NOT TempBlobWorkDescription.MoreTextLines THEN CurrReport.BREAK; //RH
+                    //         // WorkDescriptionLine := TempBlobWorkDescription.ReadTextLine;//RH
+
+                    //         IF NOT InStr.EOS() THEN CurrReport.BREAK;
+                    //         TempBlobWorkDescription.CreateInStream(InStr, TextEncoding::UTF8);
+                    //         Result := InStr.ReadText(WorkDescriptionLine);
+
+                    //     end;
+
+                    //     trigger OnPostDataItem()
+                    //     begin
+                    //         CLEAR(TempBlobWorkDescription);
+                    //     end;
+                    // }
                 }
                 trigger OnAfterGetRecord();
                 begin
@@ -1168,6 +1199,7 @@ report 50003 "ODT Sales Invoice"
         DescriptionToPrint: Text[210];
         HighDescriptionToPrint: Text[210];
         LowDescriptionToPrint: Text[210];
+        WorkDescriptionInstream: InStream;
         PrintCompany: Boolean;
         NoCopies: Integer;
         NoLoops: Integer;
